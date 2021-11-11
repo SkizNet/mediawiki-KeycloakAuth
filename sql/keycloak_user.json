@@ -1,0 +1,37 @@
+[
+	{
+		"name": "keycloak_user",
+		"comment": "Mapping of Keycloak UUIDs to MediaWiki users",
+		"columns": [
+			{
+				"name": "ku_uuid",
+				"comment": "Keycloak UUID",
+				"type": "string",
+				"options": {
+					"length": 36,
+					"notnull": true
+				}
+			},
+			{
+				"name": "ku_user",
+				"comment": "MediaWiki User ID",
+				"type": "bigint",
+				"options": {
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "keycloak_user_user",
+				"columns": [
+					"ku_user"
+				],
+				"unique": true
+			}
+		],
+		"pk": [
+			"ku_uuid"
+		]
+	}
+]

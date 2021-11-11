@@ -1,0 +1,42 @@
+{
+	"name": "KeycloakAuth",
+	"namemsg": "keycloakauth-extensionname",
+	"version": "1.0.0",
+	"author": [
+		"Ryan Schmidt"
+	],
+	"license-name": "GPL-3.0-or-later",
+	"url": "https://mwusers.org",
+	"descriptionmsg": "keycloakauth-desc",
+	"type": "other",
+	"MessagesDirs": {
+		"KeycloakAuth": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"KeycloakAuth\\": "src/"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "KeycloakAuth\\Hooks"
+		}
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "main"
+	},
+	"ExtensionFunctions": [
+		"KeycloakAuth\\Setup::registerAuthRemoteuserSettings"
+	],
+	"ServiceWiringFiles": [
+		"src/ServiceWiring.php"
+	],
+	"requires": {
+		"MediaWiki": ">= 1.35.0",
+		"extensions": {
+			"Auth_remoteuser": "*"
+		}
+	},
+	"callback": "KeycloakAuth\\Setup::registerConstants",
+	"manifest_version": 2
+}

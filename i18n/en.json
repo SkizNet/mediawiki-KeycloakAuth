@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ryan Schmidt"
+		]
+	},
+	"keycloakauth-desc": "Authentication against Keycloak via oauth2_proxy",
+	"keycloakauth-extensionname": "KeycloakAuth"
+}

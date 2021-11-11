@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ryan Schmidt"
+		]
+	},
+	"keycloakauth-desc": "{{desc|name=KeycloakAuth}}",
+	"keycloakauth-extensionname": "{{name}}"
+}
