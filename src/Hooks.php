@@ -49,14 +49,19 @@ class Hooks implements GetPreferencesHook, LoadExtensionSchemaUpdatesHook {
 	public function onGetPreferences( $user, &$preferences ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$portalUrl = $config->get( 'KeycloakAuthPortalUrl' );
-		if ( $portalUrl === '' ) {
-			// not configured
+		$sessionProvider = (string)$user->getRequest()->getSession()->getProvider();
+
+		if (
+			$portalUrl === ''
+			|| $sessionProvider !== 'MediaWiki\Extension\Auth_remoteuser\AuthRemoteuserSessionProvider'
+		) {
+			// not configured or not using Auth_remoteuser
 			return;
 		}
 
 		$button = new ButtonWidget( [
 			'href' => $portalUrl,
-			'label' => 'keycloakauth-prefs-button'
+			'label' => wfMessage( 'keycloakauth-prefs-button' )->text()
 		] );
 
 		$preferences['keycloakauth'] = [

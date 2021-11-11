@@ -43,7 +43,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.35.0",
 		"extensions": {
-			"Auth_remoteuser": "*"
+			"Auth_remoteuser": ">= 2.0.0"
 		}
 	},
 	"callback": "KeycloakAuth\\Setup::registerConstants",
