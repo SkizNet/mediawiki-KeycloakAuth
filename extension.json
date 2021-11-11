@@ -24,7 +24,8 @@
 	},
 	"Hooks": {
 		"GetPreferences": "main",
-		"LoadExtensionSchemaUpdates": "main"
+		"LoadExtensionSchemaUpdates": "main",
+		"PersonalUrls": "main"
 	},
 	"ServiceWiringFiles": [
 		"src/ServiceWiring.php"
@@ -33,8 +34,18 @@
 	"config": {
 		"PortalUrl": {
 			"value": "",
-			"description": "URL to the account management portal",
+			"description": "URL to the central account management portal",
 			"descriptionmsg": "keycloakauth-config-portalurl"
+		},
+		"LoginUrl": {
+			"value": "",
+			"description": "URL to initiate a login to the central account",
+			"descriptionmsg": "keycloakauth-config-loginurl"
+		},
+		"LogoutUrl": {
+			"value": "",
+			"description": "URL to initiate a logout from the central account",
+			"descriptionmsg": "keycloakauth-config-logouturl"
 		}
 	},
 	"requires": {

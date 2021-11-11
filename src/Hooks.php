@@ -3,14 +3,21 @@
 namespace KeycloakAuth;
 
 use DatabaseUpdater;
+use MediaWiki\Hook\PersonalUrlsHook;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use OOUI\ButtonWidget;
 use RuntimeException;
+use SkinTemplate;
+use Title;
 use User;
 
-class Hooks implements GetPreferencesHook, LoadExtensionSchemaUpdatesHook {
+class Hooks implements
+	GetPreferencesHook,
+	LoadExtensionSchemaUpdatesHook,
+	PersonalUrlsHook
+{
 	/**
 	 * Create our keycloak_user table.
 	 *
@@ -52,7 +59,7 @@ class Hooks implements GetPreferencesHook, LoadExtensionSchemaUpdatesHook {
 		$sessionProvider = (string)$user->getRequest()->getSession()->getProvider();
 
 		if (
-			$portalUrl === ''
+			!$portalUrl
 			|| $sessionProvider !== 'MediaWiki\Extension\Auth_remoteuser\AuthRemoteuserSessionProvider'
 		) {
 			// not configured or not using Auth_remoteuser
@@ -72,5 +79,30 @@ class Hooks implements GetPreferencesHook, LoadExtensionSchemaUpdatesHook {
 			'help-message' => 'keycloakauth-prefs-help',
 			'default' => (string)$button
 		];
+	}
+
+	/**
+	 * Modify the "Log in" link with the URL defined in our configuration.
+	 *
+	 * @param array &$personal_urls Array of link specifiers (see SkinTemplate.php)
+	 * @param Title &$title Current page
+	 * @param SkinTemplate $skin SkinTemplate object providing context (to check if the user is logged in, etc.)
+	 * @return void To continue hook execution
+	 */
+	public function onPersonalUrls( &$personal_urls, &$title, $skin ): void {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$loginUrl = $config->get( 'KeycloakAuthLoginUrl' );
+
+		if ( !$loginUrl ) {
+			return;
+		}
+
+		// login-private is used instead of login if the wiki isn't readable to the world
+		// we check to ensure that the one we're trying to rewrite exists just in case another extension
+		// or base config removed all login links entirely
+		$key = array_key_exists( 'login', $personal_urls ) ? 'login' : 'login-private';
+		if ( array_key_exists( $key, $personal_urls ) ) {
+			$personal_urls[$key]['href'] = $loginUrl;
+		}
 	}
 }

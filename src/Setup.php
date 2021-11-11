@@ -20,7 +20,7 @@ class Setup {
 	 * at the appropriate point.
 	 */
 	public static function registerAuthRemoteuserSettings() {
-		global $wgAuthRemoteuserUserName, $wgAuthRemoteuserUserPrefsForced;
+		global $wgAuthRemoteuserUserPrefsForced, $wgAuthRemoteuserUserName, $wgAuthRemoteuserUserUrls;
 
 		if ( $wgAuthRemoteuserUserName === null ) {
 			$wgAuthRemoteuserUserName = static function () {
@@ -39,6 +39,18 @@ class Setup {
 				/** @var KeycloakIntegration $keycloakIntegration */
 				$keycloakIntegration = MediaWikiServices::getInstance()->getService( 'KeycloakIntegration' );
 				return $keycloakIntegration->getEmail();
+			};
+		}
+
+		if ( $wgAuthRemoteuserUserUrls === null ) {
+			$wgAuthRemoteuserUserUrls = [];
+		}
+
+		if ( !array_key_exists( 'logout', $wgAuthRemoteuserUserUrls ) ) {
+			$wgAuthRemoteuserUserUrls['logout'] = static function () {
+				$config = MediaWikiServices::getInstance()->getMainConfig();
+				$logoutUrl = $config->get( 'KeycloakAuthLogoutUrl' );
+				return $logoutUrl ?: 'Special:UserLogout';
 			};
 		}
 	}

@@ -4,7 +4,9 @@
 			"Ryan Schmidt"
 		]
 	},
-	"keycloakauth-config-portalurl": "URL to the account management portal",
+	"keycloakauth-config-portalurl": "URL to the central account management portal",
+	"keycloakauth-config-loginurl": "URL to initiate a login to the central account",
+	"keycloakauth-config-logouturl": "URL to initiate a logout from the central account",
 	"keycloakauth-desc": "Authentication against Keycloak via oauth2_proxy",
 	"keycloakauth-extensionname": "KeycloakAuth",
 	"keycloakauth-prefs-button": "View and manage central account info",
