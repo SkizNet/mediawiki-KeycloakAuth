@@ -4,6 +4,10 @@
 			"Ryan Schmidt"
 		]
 	},
+	"keycloakauth-config-portalurl": "URL to the account management portal",
 	"keycloakauth-desc": "Authentication against Keycloak via oauth2_proxy",
-	"keycloakauth-extensionname": "KeycloakAuth"
+	"keycloakauth-extensionname": "KeycloakAuth",
+	"keycloakauth-prefs-button": "View and manage central account info",
+	"keycloakauth-prefs-help": "Use the central account management portal to manage your email address and password",
+	"keycloakauth-prefs-label": "Central account:"
 }

@@ -23,6 +23,7 @@
 		}
 	},
 	"Hooks": {
+		"GetPreferences": "main",
 		"LoadExtensionSchemaUpdates": "main"
 	},
 	"ExtensionFunctions": [
@@ -31,6 +32,14 @@
 	"ServiceWiringFiles": [
 		"src/ServiceWiring.php"
 	],
+	"config_prefix": "wgKeycloakAuth",
+	"config": {
+		"PortalUrl": {
+			"value": "",
+			"description": "URL to the account management portal",
+			"descriptionmsg": "keycloakauth-config-portalurl"
+		}
+	},
 	"requires": {
 		"MediaWiki": ">= 1.35.0",
 		"extensions": {

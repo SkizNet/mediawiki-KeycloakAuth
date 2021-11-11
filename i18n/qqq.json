@@ -4,6 +4,10 @@
 			"Ryan Schmidt"
 		]
 	},
+	"keycloakauth-config-portalurl": "Description for the configuration variable $wgKeycloakAuthPortalUrl.",
 	"keycloakauth-desc": "{{desc|name=KeycloakAuth}}",
-	"keycloakauth-extensionname": "{{name}}"
+	"keycloakauth-extensionname": "{{name}}",
+	"keycloakauth-prefs-button": "Text in the button which leads the user to the central account management portal",
+	"keycloakauth-prefs-help": "Help text explaining the purpose of the central account management portal",
+	"keycloakauth-prefs-label": "Label in preferences for central account management"
 }
