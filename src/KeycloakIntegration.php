@@ -95,6 +95,7 @@ class KeycloakIntegration {
 		foreach ( $result as $row ) {
 			if ( method_exists( $this->userFactory, 'newFromRow' ) ) {
 				// 1.36+
+				// @phan-suppress-next-line PhanUndeclaredMethod
 				$user = $this->userFactory->newFromRow( $row );
 			} else {
 				// 1.35
