@@ -74,6 +74,7 @@ class KeycloakIntegration {
 			'user_name',
 			[ 'ku_uuid' => $keycloakUuid ],
 			__METHOD__,
+			[],
 			[ 'user' => [ 'JOIN', 'ku_user = user_id' ] ]
 		);
 
@@ -156,7 +157,7 @@ class KeycloakIntegration {
 			);
 		}
 
-		wfDebugLog( 'KeycloakAuth', "Creating new user for $keycloakUsername" );
+		wfDebugLog( 'KeycloakAuth', "Authenticating as new user $keycloakUsername" );
 		return $keycloakUsername;
 	}
 

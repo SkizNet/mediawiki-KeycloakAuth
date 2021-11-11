@@ -6,6 +6,14 @@ use MediaWiki\MediaWikiServices;
 
 class Setup {
 	/**
+	 * extension.json callback
+	 */
+	public static function callback() {
+		self::registerConstants();
+		self::registerAuthRemoteuserSettings();
+	}
+
+	/**
 	 * ExtensionFunctions callback to wire up Auth_remoteuser with this extension.
 	 * This will only run if the variable $wgAuthRemoteuserUserName is left at its default (null),
 	 * otherwise the user should manually inject Handler::getProcessProxyHeaders() into the variable
@@ -36,7 +44,7 @@ class Setup {
 	}
 
 	/**
-	 * extension.json callback, registers backwards-compat constants
+	 * Registers backwards-compat constants
 	 *
 	 * @noinspection PhpDeprecationInspection
 	 */

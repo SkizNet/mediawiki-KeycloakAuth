@@ -26,9 +26,6 @@
 		"GetPreferences": "main",
 		"LoadExtensionSchemaUpdates": "main"
 	},
-	"ExtensionFunctions": [
-		"KeycloakAuth\\Setup::registerAuthRemoteuserSettings"
-	],
 	"ServiceWiringFiles": [
 		"src/ServiceWiring.php"
 	],
@@ -46,6 +43,6 @@
 			"Auth_remoteuser": ">= 2.0.0"
 		}
 	},
-	"callback": "KeycloakAuth\\Setup::registerConstants",
+	"callback": "KeycloakAuth\\Setup::callback",
 	"manifest_version": 2
 }
