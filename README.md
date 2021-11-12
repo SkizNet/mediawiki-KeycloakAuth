@@ -21,6 +21,28 @@ The extension will automatically configure Auth_remoteuser.
 Any changes made by the user to Auth_remoteuser configuration may cause the extension
 to not work as anticipated.
 
+In addition to the configuration below, you will need to ensure that your oauth2_proxy instance is recognized
+by MediaWiki as a trusted proxy. You do this by listing its IP or IP range in CIDR format in `$wgCdnServersNoPurge`
+([see documentation on mediawiki.org](https://www.mediawiki.org/wiki/Manual:$wgCdnServersNoPurge)).
+For example, the following will mark the IP address `10.2.3.4` as a trusted proxy server.
+```php
+$wgCdnServersNoPurge = [
+	'10.2.3.4/32'
+];
+```
+
+In most cases, you will also want to ensure that users cannot create local wiki accounts, but are able to
+have accounts created on their behalf by the KeycloakAuth extension:
+```php
+// MediaWiki's default configuration allows * and sysop
+// to create local accounts; remove that capability
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['sysop']['createaccount'] = false;
+// Ensure that everyone can have accounts created
+// automatically on their behalf
+$wgGroupPermissions['*']['autocreateaccount'] = true;
+```
+
 ### $wgKeycloakAuthPortalUrl
 *Default:* `''`
 
