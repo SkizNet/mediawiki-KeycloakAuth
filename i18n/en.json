@@ -4,9 +4,14 @@
 			"Ryan Schmidt"
 		]
 	},
-	"keycloakauth-config-portalurl": "URL to the central account management portal",
+	"keycloakauth-config-emailvariable": "Variable name that stores the email address",
+	"keycloakauth-config-insecureheaders": "If true, we don't verify that incoming HTTP headers come from a trusted proxy",
 	"keycloakauth-config-loginurl": "URL to initiate a login to the central account",
 	"keycloakauth-config-logouturl": "URL to initiate a logout from the central account",
+	"keycloakauth-config-portalurl": "URL to the central account management portal",
+	"keycloakauth-config-usernamevariable": "Variable name that stores the username",
+	"keycloakauth-config-uuidvariable": "Variable name that stores the keycloak UUID",
+	"keycloakauth-config-variabletype": "Where to pull the variables from; can be 'header' to read HTTP headers or 'env' to read environment variables",
 	"keycloakauth-desc": "Authentication against Keycloak via oauth2_proxy",
 	"keycloakauth-extensionname": "KeycloakAuth",
 	"keycloakauth-prefs-button": "View and manage central account info",

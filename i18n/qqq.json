@@ -4,9 +4,14 @@
 			"Ryan Schmidt"
 		]
 	},
-	"keycloakauth-config-portalurl": "Description for the configuration variable $wgKeycloakAuthPortalUrl.",
+	"keycloakauth-config-emailvariable": "Description for the configuration variable $wgKeycloakAuthEmailVariable.",
+	"keycloakauth-config-insecureheaders": "Description for the configuration variable $wgKeycloakAuthInsecureHeaders.",
 	"keycloakauth-config-loginurl": "Description for the configuration variable $wgKeycloakAuthLoginUrl.",
 	"keycloakauth-config-logouturl": "Description for the configuration variable $wgKeycloakAuthLogoutUrl.",
+	"keycloakauth-config-portalurl": "Description for the configuration variable $wgKeycloakAuthPortalUrl.",
+	"keycloakauth-config-usernamevariable": "Description for the configuration variable $wgKeycloakAuthUsernameVariable.",
+	"keycloakauth-config-uuidvariable": "Description for the configuration variable $wgKeycloakAuthUuidVariable.",
+	"keycloakauth-config-variabletype": "Description for the configuration variable $wgKeycloakAuthVariableType.",
 	"keycloakauth-desc": "{{desc|name=KeycloakAuth}}",
 	"keycloakauth-extensionname": "{{name}}",
 	"keycloakauth-prefs-button": "Text in the button which leads the user to the central account management portal",

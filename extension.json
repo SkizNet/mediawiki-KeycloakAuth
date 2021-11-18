@@ -32,10 +32,17 @@
 	],
 	"config_prefix": "wgKeycloakAuth",
 	"config": {
-		"PortalUrl": {
-			"value": "",
-			"description": "URL to the central account management portal",
-			"descriptionmsg": "keycloakauth-config-portalurl"
+		"EmailVariable": {
+			"value": "X-Forwarded-Email",
+			"description": "Variable name that stores the email address",
+			"descriptionmsg": "keycloakauth-config-emailvariable",
+			"public": false
+		},
+		"InsecureHeaders": {
+			"value": false,
+			"description": "If true, we don't verify that incoming HTTP headers come from a trusted proxy",
+			"descriptionmsg": "keycloakauth-config-insecureheaders",
+			"public": false
 		},
 		"LoginUrl": {
 			"value": "",
@@ -46,6 +53,29 @@
 			"value": "",
 			"description": "URL to initiate a logout from the central account",
 			"descriptionmsg": "keycloakauth-config-logouturl"
+		},
+		"PortalUrl": {
+			"value": "",
+			"description": "URL to the central account management portal",
+			"descriptionmsg": "keycloakauth-config-portalurl"
+		},
+		"UsernameVariable": {
+			"value": "X-Forwarded-Preferred-Username",
+			"description": "Variable name that stores the username",
+			"descriptionmsg": "keycloakauth-config-usernamevariable",
+			"public": false
+		},
+		"UuidVariable": {
+			"value": "X-Forwarded-User",
+			"description": "Variable name that stores the keycloak UUID",
+			"descriptionmsg": "keycloakauth-config-uuidvariable",
+			"public": false
+		},
+		"VariableType": {
+			"value": "header",
+			"description": "Where to pull the variables from; can be 'header' to read HTTP headers or 'env' to read environment variables",
+			"descriptionmsg": "keycloakauth-config-variabletype",
+			"public": false
 		}
 	},
 	"requires": {

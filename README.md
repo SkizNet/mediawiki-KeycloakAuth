@@ -43,12 +43,16 @@ $wgGroupPermissions['sysop']['createaccount'] = false;
 $wgGroupPermissions['*']['autocreateaccount'] = true;
 ```
 
-### $wgKeycloakAuthPortalUrl
-*Default:* `''`
+### $wgKeycloakAuthEmailVariable
+*Default:* `'X-Forwarded-Email'`
 
-If set, the extension will add a button to Special:Preferences leading the user to this URL.
-This should be set to the Keycloak portal where they can view and update their email and password.
-If left as the default (an empty string), no button will be added to Special:Preferences.
+The variable (header or environment variable) used to determine the user's email address.
+
+### $wgKeycloakAuthInsecureHeaders
+*Default:* `false`
+
+Allow reading variables from HTTP headers even if the upstream IP is not a trusted proxy.
+**This is a security risk and should only be enabled after careful examination of the webserver environment.**
 
 ### $wgKeycloakAuthLoginUrl
 *Default:* `''`
@@ -62,3 +66,30 @@ This should be set to the URL needed to initiate the login flow in oauth2_proxy.
 If set, the "Log out" URL will lead here when a user has been logged in via KeycloakAuth. Users logged in
 through other means will not be impacted. If unset, the "Log out" link will be removed for users logged in
 via KeycloakAuth.
+
+### $wgKeycloakAuthPortalUrl
+*Default:* `''`
+
+If set, the extension will add a button to Special:Preferences leading the user to this URL.
+This should be set to the Keycloak portal where they can view and update their email and password.
+If left as the default (an empty string), no button will be added to Special:Preferences.
+
+### $wgKeycloakAuthUsernameVariable
+*Default:* `'X-Forwarded-Preferred-Username'`
+
+The variable (header or environment variable) used to determine the user's username.
+This value is not used if the Keycloak UUID is already mapped to a MediaWiki user.
+
+### $wgKeycloakAuthUuidVariable
+*Default:* `'X-Forwarded-User'`
+
+The variable (header or environment variable) used to determine the user's Keycloak UUID.
+
+### $wgKeycloakAuthVariableType
+*Default:* `'header'`
+
+- If set to `'header'`, the variables will be read from incoming HTTP headers.
+- If set to `'env'`, the variables will be read from environment variables.
+
+By default, the extension will refuse to operate if this is set to `'header'` and the upstream
+IP is not a trusted proxy.
