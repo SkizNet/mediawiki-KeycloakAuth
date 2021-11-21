@@ -60,12 +60,16 @@ Allow reading variables from HTTP headers even if the upstream IP is not a trust
 If set, the "Log in" URL will be replaced with this value when the wiki is viewed by a logged-out user.
 This should be set to the URL needed to initiate the login flow in oauth2_proxy.
 
+The URL may contain the placeholder `$1` which will be replaced by the current URL.
+
 ### $wgKeycloakAuthLogoutUrl
 *Default:* `''`
 
 If set, the "Log out" URL will lead here when a user has been logged in via KeycloakAuth. Users logged in
 through other means will not be impacted. If unset, the "Log out" link will be removed for users logged in
 via KeycloakAuth.
+
+The URL may contain the placeholder `$1` which will be replaced by the current URL.
 
 ### $wgKeycloakAuthPortalUrl
 *Default:* `''`

@@ -102,7 +102,9 @@ class Hooks implements
 		// or base config removed all login links entirely
 		$key = array_key_exists( 'login', $personal_urls ) ? 'login' : 'login-private';
 		if ( array_key_exists( $key, $personal_urls ) ) {
-			$personal_urls[$key]['href'] = $loginUrl;
+			$request = $skin->getRequest();
+			$currentUrl = urlencode( $request->getFullRequestURL() );
+			$personal_urls[$key]['href'] = str_replace( '$1', $currentUrl, $loginUrl );
 		}
 	}
 }

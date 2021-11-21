@@ -3,6 +3,7 @@
 namespace KeycloakAuth;
 
 use MediaWiki\MediaWikiServices;
+use RequestContext;
 
 class Setup {
 	/**
@@ -49,8 +50,10 @@ class Setup {
 		if ( !array_key_exists( 'logout', $wgAuthRemoteuserUserUrls ) ) {
 			$wgAuthRemoteuserUserUrls['logout'] = static function () {
 				$config = MediaWikiServices::getInstance()->getMainConfig();
+				$request = RequestContext::getMain()->getRequest();
 				$logoutUrl = $config->get( 'KeycloakAuthLogoutUrl' );
-				return $logoutUrl ?: 'Special:UserLogout';
+				$currentUrl = urlencode( $request->getFullRequestURL() );
+				return str_replace( '$1', $currentUrl, $logoutUrl ) ?: 'Special:UserLogout';
 			};
 		}
 	}
